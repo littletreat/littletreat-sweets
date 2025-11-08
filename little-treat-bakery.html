@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Treat - Premium Chocolates & Confections | Ahmedabad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #B19CD9;
+            --light-purple: #E6D7FF;
+            --soft-lavender: #F5F0FF;
+            --deep-purple: #7B68A8;
+            --accent-purple: #D4C2F0;
+            --text-dark: #4A3B5C;
+            --cream-purple: #FAF7FF;
+            --gradient-bg: linear-gradient(135deg, #FAF7FF 0%, #F0E6FF 50%, #E6D7FF 100%);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 247, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--deep-purple);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: var(--gradient-bg);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23D4AF37" opacity="0.3"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/></circle><circle cx="80" cy="30" r="1.5" fill="%23D4AF37" opacity="0.4"><animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="60" cy="70" r="2.5" fill="%23D4AF37" opacity="0.2"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite"/></circle></svg>') repeat;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .hero-text {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--deep-purple);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .owners {
+            font-style: italic;
+            color: var(--deep-purple);
+            margin-bottom: 2rem;
+        }
+
+        .pre-order-notice {
+            background: var(--light-purple);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-purple);
+        }
+
+        .pre-order-notice h4 {
+            color: var(--deep-purple);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-purple), var(--deep-purple));
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(177, 156, 217, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(177, 156, 217, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .chocolate-showcase {
+            width: 100%;
+            height: 400px;
+            background: radial-gradient(circle, var(--soft-lavender) 0%, var(--light-purple) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: var(--deep-purple);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chocolate-showcase::before {
+            content: '🍫';
+            position: absolute;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            color: var(--deep-purple);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--primary-purple);
+            margin: 1rem auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(177, 156, 217, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(177, 156, 217, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .menu-item:hover::before {
+            left: 100%;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .item-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--deep-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .item-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            background: linear-gradient(45deg, var(--primary-purple), var(--deep-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .item-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: var(--gradient-bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--deep-purple);
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .owners-info {
+            background: rgba(255,255,255,0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .owners-info h3 {
+            color: var(--deep-purple);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: var(--deep-purple);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--light-purple);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--light-purple);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--light-purple);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Special Effects */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 20%; right: 10%; animation-delay: 1s; }
+        .floating-element:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .floating-element:nth-child(4) { bottom: 10%; right: 20%; animation-delay: 3s; }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element">🍫</div>
+        <div class="floating-element">🧁</div>
+        <div class="floating-element">🍰</div>
+        <div class="floating-element">🍪</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Little Treat</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Little Treat</h1>
+                <p class="hero-subtitle">Premium Chocolates & Confections</p>
+                <p class="hero-description">
+                    Indulge in our handcrafted chocolates and artisanal treats, made with love and the finest ingredients. 
+                    Every bite is a journey to chocolate paradise.
+                </p>
+                
+                <div class="pre-order-notice">
+                    <h4>📋 Pre-Orders Only</h4>
+                    <p>We accept pre-orders to ensure the freshest, highest quality treats just for you!</p>
+                </div>
+                
+                <div class="pre-order-notice">
+                    <h4>🎁 Gift Hampers Available</h4>
+                    <p>Perfect for celebrations! Custom gift hampers with beautiful packaging for your special occasions.</p>
+                </div>
+                
+                <p class="owners">🌟 Lovingly crafted by Foram & Parth 🌟</p>
+                <a href="#menu" class="cta-button">Pre-Order Now</a>
+            </div>
+            <div class="hero-image">
+                <div class="chocolate-showcase">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="section-title">Our Delicious Menu</h2>
+            
+            <div style="text-align: center; margin-bottom: 3rem; padding: 2rem; background: var(--light-purple); border-radius: 15px;">
+                <h3 style="color: var(--deep-purple); margin-bottom: 1rem; font-family: 'Playfair Display', serif;">🎯 Pre-Orders Only</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">All items are made fresh to order. Please place your order 24-48 hours in advance.</p>
+                <p style="font-size: 1.1rem; color: var(--deep-purple); font-weight: 600;">🎁 Ask us about custom gift hampers for special occasions!</p>
+            </div>
+            
+            <div class="menu-grid">
+                
+                <div class="menu-item">
+                    <span class="item-icon">🍫</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Plain Chocolates</h3>
+                            <p class="item-description">Pure, rich dark chocolate made from premium cocoa beans</p>
+                        </div>
+                        <span class="item-price">₹150</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🌰</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Almond / Walnut Chocolates</h3>
+                            <p class="item-description">Crunchy nuts perfectly embedded in smooth chocolate</p>
+                        </div>
+                        <span class="item-price">₹220</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🥜</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Dryfruit Chocolates</h3>
+                            <p class="item-description">A medley of premium dry fruits in rich chocolate coating</p>
+                        </div>
+                        <span class="item-price">₹280</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🌴</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Dates Chocolates</h3>
+                            <p class="item-description">Sweet Medjool dates wrapped in luxurious chocolate</p>
+                        </div>
+                        <span class="item-price">₹240</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🌶️</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Chilli Guava Chocolate</h3>
+                            <p class="item-description">Exotic fusion of spicy chilli and tropical guava</p>
+                        </div>
+                        <span class="item-price">₹180</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🎭</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Pan Masala Pinata Chocolate</h3>
+                            <p class="item-description">Traditional Indian flavors in a chocolate surprise</p>
+                        </div>
+                        <span class="item-price">₹200</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">☕</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Crispy Coffee Bite</h3>
+                            <p class="item-description">Espresso-infused chocolate with crispy coffee beans</p>
+                        </div>
+                        <span class="item-price">₹160</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🧂</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Salted Caramel Bar Chocolate</h3>
+                            <p class="item-description">Smooth caramel with a hint of sea salt in dark chocolate</p>
+                        </div>
+                        <span class="item-price">₹190</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🥥</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Bounty Bars</h3>
+                            <p class="item-description">Tropical coconut wrapped in premium milk chocolate</p>
+                        </div>
+                        <span class="item-price">₹170</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">💌</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Letter Chocolate</h3>
+                            <p class="item-description">Personalized chocolate letters for special occasions</p>
+                        </div>
+                        <span class="item-price">₹120</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🎨</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Designer Chocolate Bar</h3>
+                            <p class="item-description">Artistically crafted chocolate bars with unique designs</p>
+                        </div>
+                        <span class="item-price">₹250</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">☕</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Mini Coffee Cups</h3>
+                            <p class="item-description">Adorable chocolate cups filled with coffee ganache</p>
+                        </div>
+                        <span class="item-price">₹140</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🍯</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Salted Caramel Bites</h3>
+                            <p class="item-description">Bite-sized pieces of salted caramel heaven</p>
+                        </div>
+                        <span class="item-price">₹130</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🍍</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Pineapple Crush Bites</h3>
+                            <p class="item-description">Tropical pineapple flavor in bite-sized chocolates</p>
+                        </div>
+                        <span class="item-price">₹160</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🍦</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Ice Cream Chocolates</h3>
+                            <p class="item-description">Cool and creamy ice cream flavors in chocolate form</p>
+                        </div>
+                        <span class="item-price">₹180</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🍬</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Chewy Toffee</h3>
+                            <p class="item-description">Classic chewy toffee with a modern chocolate twist</p>
+                        </div>
+                        <span class="item-price">₹110</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">✨</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Ferrero Rocher Bite</h3>
+                            <p class="item-description">Luxurious hazelnut chocolates with crispy wafer</p>
+                        </div>
+                        <span class="item-price">₹300</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <span class="item-icon">🥜</span>
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-name">Crunchy Hazel Bar</h3>
+                            <p class="item-description">Roasted hazelnuts in smooth milk chocolate bar</p>
+                        </div>
+                        <span class="item-price">₹210</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Little Treat</h2>
+                    <p>
+                        Welcome to Little Treat, where passion meets perfection in every chocolate creation. Located in the vibrant city of Ahmedabad, 
+                        we specialize in handcrafted chocolates and artisanal confections that bring joy to every moment.
+                    </p>
+                    <p>
+                        Our journey began with a simple dream - to create chocolates that not only taste extraordinary but also tell a story of 
+                        craftsmanship, quality, and love. Every piece is carefully made using the finest ingredients sourced from around the world.
+                    </p>
+                    <p>
+                        <strong>Pre-Orders & Gift Hampers:</strong> We work on a pre-order basis to ensure maximum freshness and quality. 
+                        Looking for the perfect gift? Our beautiful gift hampers are customized for birthdays, anniversaries, festivals, 
+                        and corporate events. Each hamper is thoughtfully curated and elegantly packaged.
+                    </p>
+                    <div class="owners-info">
+                        <h3>Meet Our Founders</h3>
+                        <p>
+                            <strong>Foram & Parth</strong> - The creative minds behind Little Treat. With years of experience in confectionery arts 
+                            and a shared passion for innovation, they bring unique flavors and artistic designs that make every treat a memorable experience.
+                        </p>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="chocolate-showcase">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div>
+                    <h2>Place Your Pre-Order</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Ahmedabad, Gujarat, India</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>preorders@littletreat.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Order Window: 9:00 AM - 7:00 PM</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-gift"></i>
+                            <span>Gift Hampers: Custom packaging available</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2>How to Order</h2>
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--light-purple); margin-bottom: 1rem;">📞 Simple 3-Step Process:</h4>
+                        <p style="margin-bottom: 0.5rem;">1. Call or WhatsApp us with your requirements</p>
+                        <p style="margin-bottom: 0.5rem;">2. We'll confirm your order & provide pickup/delivery details</p>
+                        <p style="margin-bottom: 1rem;">3. Enjoy your fresh, handcrafted treats!</p>
+                        
+                        <h4 style="color: var(--light-purple); margin-bottom: 1rem;">🎁 Gift Hampers:</h4>
+                        <p>Perfect for festivals, birthdays, corporate gifts, and special celebrations. We create beautiful custom packages!</p>
+                    </div>
+                    
+                    <h3 style="margin-bottom: 1rem;">Follow Our Sweet Journey</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Little Treat. Crafted with 💝 by Foram & Parth | All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate menu items on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(250, 247, 255, 0.98)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(250, 247, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
